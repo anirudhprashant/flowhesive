@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
+import React, { useState } from 'react';
+import { Routes, Route, Link as RouterLink } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   ArrowRight, 
   Code2, 
@@ -15,8 +16,6 @@ import {
   Plus,
   Minus,
   Globe,
-  Sun,
-  Moon,
   MousePointer2,
   CheckCircle2,
   MessageSquare,
@@ -24,23 +23,24 @@ import {
   Gauge
 } from 'lucide-react';
 
+// Navbar as a separate component that accepts current path
 const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-white border-b-4 border-black">
-      <div className="text-2xl font-display font-bold tracking-tight text-black flex items-center gap-3">
+      <RouterLink to="/" className="text-2xl font-display font-bold tracking-tight text-black flex items-center gap-3 no-underline">
         <div className="w-3 h-3 bg-accent-primary border-2 border-black"></div>
         Flowhesive
-      </div>
+      </RouterLink>
       <div className="hidden md:flex items-center gap-8 text-sm font-bold text-black uppercase tracking-wider">
-        <a href="#solutions" className="hover:text-accent-primary transition-colors">What we do</a>
-        <a href="#work" className="hover:text-accent-primary transition-colors">Our Work</a>
-        <a href="#process" className="hover:text-accent-primary transition-colors">How it works</a>
-        <a href="#pricing" className="hover:text-accent-primary transition-colors">Pricing</a>
+        <a href="/#solutions" className="hover:text-accent-primary transition-colors no-underline">What we do</a>
+        <RouterLink to="/work" className="hover:text-accent-primary transition-colors no-underline">Our Work</RouterLink>
+        <a href="/#process" className="hover:text-accent-primary transition-colors no-underline">How it works</a>
+        <a href="/#pricing" className="hover:text-accent-primary transition-colors no-underline">Pricing</a>
       </div>
       <div className="flex items-center gap-4">
-        <a href="#contact" aria-label="Start a project with Flowhesive" className="hidden md:block px-6 py-2.5 text-sm font-bold text-black bg-accent-primary border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all uppercase tracking-wider">
+        <RouterLink to="/#contact" aria-label="Start a project with Flowhesive" className="hidden md:block px-6 py-2.5 text-sm font-bold text-black bg-accent-primary border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all uppercase tracking-wider no-underline">
           Get in touch
-        </a>
+        </RouterLink>
       </div>
     </nav>
   );
@@ -222,444 +222,6 @@ const Solutions = () => {
   );
 };
 
-const dummy1 = `data:text/html;charset=utf-8,${encodeURIComponent(`
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-      body { margin: 0; font-family: 'Inter', sans-serif; background: #f3f4f6; color: #111827; display: flex; height: 100vh; overflow: hidden; }
-      .sidebar { width: 240px; background: #ffffff; border-right: 1px solid #e5e7eb; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
-      .logo { font-weight: 600; font-size: 20px; margin-bottom: 24px; color: #4f46e5; display: flex; align-items: center; gap: 8px; }
-      .logo-icon { width: 24px; height: 24px; background: #4f46e5; border-radius: 6px; }
-      .nav-item { padding: 10px 12px; border-radius: 6px; color: #4b5563; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
-      .nav-item:hover { background: #f9fafb; }
-      .nav-item.active { background: #f3f4f6; color: #111827; }
-      .main { flex: 1; padding: 40px; overflow-y: auto; position: relative; }
-      .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
-      .title { font-size: 24px; font-weight: 600; }
-      
-      /* Screens */
-      .screen { display: none; animation: fadeIn 0.3s ease; }
-      .screen.active { display: block; }
-      @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-      
-      /* Dashboard Specific */
-      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
-      .card { background: #ffffff; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
-      .card-title { font-size: 13px; color: #6b7280; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
-      .card-value { font-size: 32px; font-weight: 600; margin-top: 12px; }
-      .card-trend { font-size: 13px; color: #10b981; margin-top: 8px; font-weight: 500; display: flex; align-items: center; gap: 4px; }
-      .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
-      .panel { background: #ffffff; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb; }
-      .panel-title { font-size: 16px; font-weight: 600; margin-bottom: 24px; }
-      .bar-chart { display: flex; align-items: flex-end; gap: 16px; height: 200px; }
-      .bar { flex: 1; background: #e0e7ff; border-radius: 4px 4px 0 0; position: relative; }
-      .bar-inner { position: absolute; bottom: 0; width: 100%; background: #4f46e5; border-radius: 4px 4px 0 0; transition: height 1s ease; }
-      .list-item { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid #f3f4f6; }
-      .list-item:last-child { border-bottom: none; padding-bottom: 0; }
-      .item-left { display: flex; flex-direction: column; gap: 4px; }
-      .item-name { font-size: 14px; font-weight: 600; }
-      .item-desc { font-size: 13px; color: #6b7280; }
-      .badge { padding: 4px 8px; border-radius: 99px; font-size: 12px; font-weight: 500; background: #dcfce7; color: #166534; }
-      
-      /* Table Styles for other screens */
-      .table-container { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
-      table { width: 100%; border-collapse: collapse; text-align: left; }
-      th { background: #f9fafb; padding: 12px 24px; font-size: 12px; font-weight: 500; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e5e7eb; }
-      td { padding: 16px 24px; border-bottom: 1px solid #e5e7eb; font-size: 14px; }
-      tr:last-child td { border-bottom: none; }
-      
-      /* Settings */
-      .settings-group { margin-bottom: 32px; }
-      .settings-label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; color: #374151; }
-      .settings-input { width: 100%; max-width: 400px; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-family: inherit; font-size: 14px; }
-      .btn { background: #4f46e5; color: white; border: none; padding: 10px 16px; border-radius: 6px; font-weight: 500; cursor: pointer; }
-      .btn:hover { background: #4338ca; }
-    </style>
-  </head>
-  <body>
-    <div class="sidebar">
-      <div class="logo"><div class="logo-icon"></div>TradeFlow</div>
-      <div class="nav-item active" onclick="showScreen('dashboard', this)">Dashboard</div>
-      <div class="nav-item" onclick="showScreen('invoices', this)">Invoices</div>
-      <div class="nav-item" onclick="showScreen('customers', this)">Customers</div>
-      <div class="nav-item" onclick="showScreen('inventory', this)">Inventory</div>
-      <div class="nav-item" onclick="showScreen('settings', this)">Settings</div>
-    </div>
-    <div class="main">
-      <div class="header">
-        <div class="title" id="page-title">Overview</div>
-        <div style="width: 40px; height: 40px; border-radius: 50%; background: #d1d5db; border: 2px solid #fff; box-shadow: 0 0 0 1px #e5e7eb;"></div>
-      </div>
-      
-      <!-- Dashboard Screen -->
-      <div id="dashboard" class="screen active">
-        <div class="grid">
-          <div class="card">
-            <div class="card-title">Monthly Revenue</div>
-            <div class="card-value">£12,450</div>
-            <div class="card-trend">↑ 14% vs last month</div>
-          </div>
-          <div class="card">
-            <div class="card-title">Active Clients</div>
-            <div class="card-value">142</div>
-            <div class="card-trend">↑ 3 new this week</div>
-          </div>
-          <div class="card">
-            <div class="card-title">Pending Invoices</div>
-            <div class="card-value">£3,200</div>
-            <div class="card-trend" style="color: #ef4444;">5 overdue</div>
-          </div>
-        </div>
-        <div class="content-grid">
-          <div class="panel">
-            <div class="panel-title">Revenue Trend</div>
-            <div class="bar-chart">
-              <div class="bar"><div class="bar-inner" style="height: 40%;"></div></div>
-              <div class="bar"><div class="bar-inner" style="height: 60%;"></div></div>
-              <div class="bar"><div class="bar-inner" style="height: 35%;"></div></div>
-              <div class="bar"><div class="bar-inner" style="height: 80%;"></div></div>
-              <div class="bar"><div class="bar-inner" style="height: 50%;"></div></div>
-              <div class="bar"><div class="bar-inner" style="height: 90%;"></div></div>
-              <div class="bar"><div class="bar-inner" style="height: 75%;"></div></div>
-            </div>
-          </div>
-          <div class="panel">
-            <div class="panel-title">Recent Activity</div>
-            <div class="list-item">
-              <div class="item-left"><span class="item-name">Invoice #1042</span><span class="item-desc">Smith Plumbing</span></div>
-              <div class="badge">Paid</div>
-            </div>
-            <div class="list-item">
-              <div class="item-left"><span class="item-name">New Client</span><span class="item-desc">Apex Builders</span></div>
-              <div class="badge" style="background: #eff6ff; color: #1e40af;">Added</div>
-            </div>
-            <div class="list-item">
-              <div class="item-left"><span class="item-name">Invoice #1043</span><span class="item-desc">Oak Cafe</span></div>
-              <div class="badge" style="background: #fef3c7; color: #92400e;">Sent</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Invoices Screen -->
-      <div id="invoices" class="screen">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 24px;">
-          <input type="text" placeholder="Search invoices..." class="settings-input" style="max-width: 300px;">
-          <button class="btn">Create Invoice</button>
-        </div>
-        <div class="table-container">
-          <table>
-            <thead><tr><th>Invoice</th><th>Client</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
-            <tbody>
-              <tr><td>#1044</td><td>TechCorp Ltd</td><td>£1,250.00</td><td><span class="badge" style="background: #fef3c7; color: #92400e;">Pending</span></td><td>Oct 24, 2023</td></tr>
-              <tr><td>#1043</td><td>Oak Cafe</td><td>£450.00</td><td><span class="badge" style="background: #fef3c7; color: #92400e;">Sent</span></td><td>Oct 22, 2023</td></tr>
-              <tr><td>#1042</td><td>Smith Plumbing</td><td>£890.00</td><td><span class="badge">Paid</span></td><td>Oct 20, 2023</td></tr>
-              <tr><td>#1041</td><td>Apex Builders</td><td>£3,400.00</td><td><span class="badge">Paid</span></td><td>Oct 15, 2023</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Customers Screen -->
-      <div id="customers" class="screen">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 24px;">
-          <input type="text" placeholder="Search customers..." class="settings-input" style="max-width: 300px;">
-          <button class="btn">Add Customer</button>
-        </div>
-        <div class="table-container">
-          <table>
-            <thead><tr><th>Name</th><th>Company</th><th>Email</th><th>Total Spent</th></tr></thead>
-            <tbody>
-              <tr><td style="font-weight: 500;">Sarah Jenkins</td><td>TechCorp Ltd</td><td>sarah@techcorp.co.uk</td><td>£12,450.00</td></tr>
-              <tr><td style="font-weight: 500;">Mike Smith</td><td>Smith Plumbing</td><td>mike@smithplumbing.com</td><td>£4,890.00</td></tr>
-              <tr><td style="font-weight: 500;">Emma Davis</td><td>Oak Cafe</td><td>emma@oakcafe.co.uk</td><td>£1,200.00</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Inventory Screen -->
-      <div id="inventory" class="screen">
-        <div class="table-container">
-          <table>
-            <thead><tr><th>SKU</th><th>Product Name</th><th>Stock</th><th>Price</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr><td>PRD-001</td><td>Premium Widget</td><td>145</td><td>£24.99</td><td><span class="badge">In Stock</span></td></tr>
-              <tr><td>PRD-002</td><td>Standard Widget</td><td>12</td><td>£14.99</td><td><span class="badge" style="background: #fee2e2; color: #b91c1c;">Low Stock</span></td></tr>
-              <tr><td>PRD-003</td><td>Pro Tool Kit</td><td>0</td><td>£149.99</td><td><span class="badge" style="background: #f3f4f6; color: #4b5563;">Out of Stock</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Settings Screen -->
-      <div id="settings" class="screen">
-        <div class="panel" style="max-width: 600px;">
-          <h3 style="margin-top: 0; margin-bottom: 24px; font-size: 18px;">Company Profile</h3>
-          <div class="settings-group">
-            <label class="settings-label">Company Name</label>
-            <input type="text" class="settings-input" value="TradeFlow Ltd">
-          </div>
-          <div class="settings-group">
-            <label class="settings-label">Support Email</label>
-            <input type="email" class="settings-input" value="support@tradeflow-crm.com">
-          </div>
-          <div class="settings-group">
-            <label class="settings-label">Currency</label>
-            <select class="settings-input">
-              <option>GBP (£)</option>
-              <option>USD ($)</option>
-              <option>EUR (€)</option>
-            </select>
-          </div>
-          <button class="btn">Save Changes</button>
-        </div>
-      </div>
-
-    </div>
-
-    <script>
-      function showScreen(screenId, navElement) {
-        // Update nav active state
-        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-        navElement.classList.add('active');
-        
-        // Update title
-        document.getElementById('page-title').innerText = navElement.innerText;
-        
-        // Show screen
-        document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
-        document.getElementById(screenId).classList.add('active');
-      }
-    </script>
-  </body>
-  </html>
-`)}`;
-
-const dummy2 = `data:text/html;charset=utf-8,${encodeURIComponent(`
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-      body { margin: 0; font-family: 'Inter', sans-serif; background: #fafafa; color: #171717; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-      .header { height: 72px; background: #fff; border-bottom: 1px solid #e5e5e5; display: flex; align-items: center; padding: 0 40px; justify-content: space-between; }
-      .logo { font-weight: 600; font-size: 20px; color: #000; display: flex; align-items: center; gap: 10px; }
-      .logo-dot { width: 14px; height: 14px; background: #f97316; border-radius: 50%; }
-      .nav { display: flex; gap: 32px; }
-      .nav-link { color: #737373; font-size: 15px; font-weight: 500; cursor: pointer; }
-      .nav-link.active { color: #000; }
-      .main { display: flex; flex: 1; padding: 40px; gap: 40px; max-width: 1400px; margin: 0 auto; width: 100%; box-sizing: border-box; }
-      .col-left { flex: 2; }
-      .col-right { flex: 1; }
-      h2 { margin: 0 0 24px 0; font-size: 22px; font-weight: 600; }
-      .job-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 24px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
-      .job-time { font-size: 16px; font-weight: 600; color: #f97316; width: 100px; }
-      .job-details { flex: 1; }
-      .job-title { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
-      .job-client { font-size: 15px; color: #737373; }
-      .job-status { padding: 6px 12px; border-radius: 99px; font-size: 13px; font-weight: 500; background: #ecfdf5; color: #059669; }
-      .stat-box { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 24px; margin-bottom: 16px; }
-      .stat-label { font-size: 14px; color: #737373; margin-bottom: 8px; font-weight: 500; }
-      .stat-value { font-size: 32px; font-weight: 600; }
-    </style>
-  </head>
-  <body>
-    <div class="header">
-      <div class="logo"><div class="logo-dot"></div>ServiceSync</div>
-      <div class="nav">
-        <div class="nav-link active">Schedule</div>
-        <div class="nav-link">Clients</div>
-        <div class="nav-link">Estimates</div>
-        <div class="nav-link">Team</div>
-      </div>
-      <div style="width: 40px; height: 40px; border-radius: 50%; background: #e5e5e5; border: 2px solid #fff; box-shadow: 0 0 0 1px #d4d4d4;"></div>
-    </div>
-    <div class="main">
-      <div class="col-left">
-        <h2>Today's Dispatch</h2>
-        <div class="job-card">
-          <div class="job-time">09:00 AM</div>
-          <div class="job-details">
-            <div class="job-title">HVAC Maintenance</div>
-            <div class="job-client">124 Maple Street • John Davis</div>
-          </div>
-          <div class="job-status">Completed</div>
-        </div>
-        <div class="job-card">
-          <div class="job-time">11:30 AM</div>
-          <div class="job-details">
-            <div class="job-title">Emergency Leak Repair</div>
-            <div class="job-client">890 Oak Avenue • Sarah Jenkins</div>
-          </div>
-          <div class="job-status" style="background: #eff6ff; color: #2563eb;">In Progress</div>
-        </div>
-        <div class="job-card">
-          <div class="job-time">02:00 PM</div>
-          <div class="job-details">
-            <div class="job-title">Annual Inspection</div>
-            <div class="job-client">Commercial Plaza • Unit 4B</div>
-          </div>
-          <div class="job-status" style="background: #f5f5f5; color: #525252;">Upcoming</div>
-        </div>
-      </div>
-      <div class="col-right">
-        <h2>Overview</h2>
-        <div class="stat-box">
-          <div class="stat-label">Jobs Completed Today</div>
-          <div class="stat-value">4 / 7</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-label">Estimated Revenue</div>
-          <div class="stat-value">£850.00</div>
-        </div>
-      </div>
-    </div>
-  </body>
-  </html>
-`)}`;
-
-const ProjectFrame = ({ project }: { project: any }) => {
-  const [interactive, setInteractive] = useState(false);
-
-  return (
-    <div className="flex flex-col gap-4 group" onMouseLeave={() => setInteractive(false)}>
-      <div className="flex justify-between items-end px-2">
-        <div>
-          <h3 className="text-2xl font-display font-bold text-black">{project.name}</h3>
-          <div className="font-mono text-xs text-black font-bold mt-1 uppercase tracking-wider">{project.type}</div>
-        </div>
-      </div>
-      
-      <div className="border-4 border-black bg-white flex flex-col shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
-        {/* Browser Header */}
-        <div className="h-10 border-b-4 border-black flex items-center px-4 gap-4 bg-accent-primary">
-          <div className="flex gap-1.5">
-            <div className="w-3 h-3 bg-white border-2 border-black" />
-            <div className="w-3 h-3 bg-white border-2 border-black" />
-            <div className="w-3 h-3 bg-white border-2 border-black" />
-          </div>
-          <div className="flex-1 flex justify-center">
-            <div className="bg-white border-2 border-black px-4 py-1 text-[10px] font-bold text-black flex items-center gap-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-              <Globe className="w-3 h-3" />
-              {project.displayUrl}
-            </div>
-          </div>
-          <div className="w-10"></div>
-        </div>
-        
-        {/* Iframe or Image Container */}
-        <div className="relative w-full aspect-video bg-black overflow-hidden">
-          {project.screenshot ? (
-            <img 
-              src={project.screenshot} 
-              alt={`${project.name} screenshot`}
-              className="w-full h-full object-cover object-top transition-all duration-[8s] ease-in-out"
-              style={{ objectPosition: interactive ? 'bottom' : 'top' }}
-            />
-          ) : (
-            <iframe 
-              src={project.url} 
-              className="absolute top-0 left-0 w-[400%] h-[400%] md:w-[250%] md:h-[250%] origin-top-left scale-[0.25] md:scale-[0.4] border-none" 
-              loading="lazy" 
-              title={project.name}
-              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-            />
-          )}
-          
-          {/* Interaction Overlay to prevent scroll trapping (for iframes) */}
-          {!interactive && !project.screenshot && (
-            <div 
-              className="absolute inset-0 bg-white/10 z-10 cursor-pointer flex items-center justify-center backdrop-blur-[1px] transition-all duration-300"
-              onClick={() => setInteractive(true)}
-            >
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-accent-secondary text-black px-6 py-3 font-medium text-sm flex items-center gap-2 shadow-xl">
-                Click to interact <ArrowRight className="w-4 h-4" />
-              </div>
-            </div>
-          )}
-
-          {/* Hover Overlay for Images */}
-          {!interactive && project.screenshot && (
-            <div 
-              className="absolute inset-0 bg-white/10 z-10 cursor-pointer flex items-center justify-center backdrop-blur-[1px] transition-all duration-300"
-              onMouseEnter={() => setInteractive(true)}
-            >
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-accent-secondary text-black px-6 py-3 font-medium text-sm flex items-center gap-2 shadow-xl">
-                Hover to scroll <ArrowRight className="w-4 h-4" />
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Portfolio = () => {
-  const projects = [
-    { 
-      name: "Barestack", 
-      url: "https://barestack.org", 
-      type: "Web App", 
-      displayUrl: "barestack.org",
-      screenshot: "/barestack-ss.png"
-    },
-    { 
-      name: "Pouchlab", 
-      url: "https://pouchlab.co.uk", 
-      type: "E-Commerce", 
-      displayUrl: "pouchlab.co.uk",
-      screenshot: "/pouchlab-ss.png"
-    },
-    { 
-      name: "AI Vaping", 
-      url: "https://aivaping.com", 
-      type: "Marketing Site", 
-      displayUrl: "aivaping.com",
-      screenshot: "/aiv-ss.png"
-    },
-    { name: "TradeFlow", url: dummy1, type: "B2B CRM Dashboard", displayUrl: "tradeflow-crm.com" },
-  ];
-
-  return (
-    <section id="work" className="py-32 px-6 md:px-12 bg-white text-black border-t-4 border-black">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-20">
-          <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-black bg-accent-primary mb-8 text-xs font-bold tracking-widest text-black uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-[1deg]">
-            <div className="w-2 h-2 bg-black"></div>
-            <span>Our Work</span>
-          </div>
-          <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight mb-6 font-bold">
-            Real results for <br/>
-            <span className="text-black/60">real businesses.</span>
-          </h2>
-          <p className="text-black text-lg font-medium max-w-xl">
-            Don't just take our word for it. Take a look at some of the websites and systems we've built for our clients.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          {projects.map((project, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: (i % 2) * 0.1 }}
-              className={i % 2 !== 0 ? "lg:mt-24" : ""}
-            >
-              <ProjectFrame project={project} />
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const Services = () => {
   const services = [
     {
@@ -667,24 +229,18 @@ const Services = () => {
       title: 'Websites',
       description: 'Clean, fast, and easy to use. We build websites that look great on phones and computers, and most importantly, get people to contact you.',
       icon: <Code2 className="w-6 h-6" />,
-      color: 'group-hover:text-accent-secondary',
-      borderColor: 'group-hover:border-accent-secondary'
     },
     {
       id: '02',
       title: 'Automations',
       description: 'Stop doing things by hand. We connect your website to your email, phone, and calendar so things happen automatically while you sleep.',
       icon: <Zap className="w-6 h-6" />,
-      color: 'group-hover:text-accent-secondary',
-      borderColor: 'group-hover:border-accent-secondary'
     },
     {
       id: '03',
       title: 'Support',
-      description: 'We don\'t just build it and leave. We stick around to keep everything updated, secure, and running smoothly so you never have to stress.',
+      description: "We don't just build it and leave. We stick around to keep everything updated, secure, and running smoothly so you never have to stress.",
       icon: <Smartphone className="w-6 h-6" />,
-      color: 'group-hover:text-accent-secondary',
-      borderColor: 'group-hover:border-accent-secondary'
     }
   ];
 
@@ -711,7 +267,7 @@ const Services = () => {
               transition={{ delay: index * 0.15, duration: 0.6 }}
             >
               <div className="flex justify-between items-start mb-12">
-                <div className={`text-black transition-colors duration-300`}>
+                <div className="text-black">
                   {service.icon}
                 </div>
                 <div className="font-handwriting text-2xl font-bold text-black">
@@ -757,7 +313,6 @@ const FeaturesBento = () => {
               <h3 className="text-2xl font-display font-bold mb-2">Beautiful Websites</h3>
               <p className="text-zinc-700 font-medium text-base">Never lose a lead to a bad design again.</p>
             </div>
-            {/* Animated UI mockup */}
             <div className="flex-1 bg-accent-primary border-4 border-black p-4 relative overflow-hidden flex flex-col shadow-[inset_4px_4px_0px_0px_rgba(0,0,0,0.1)]">
               <div className="w-full h-8 bg-white rounded-md border-2 border-black mb-3 flex items-center px-3 shrink-0">
                 <div className="w-2 h-2 rounded-full border border-black mr-1.5"></div>
@@ -772,7 +327,6 @@ const FeaturesBento = () => {
                   <span className="text-accent-secondary font-medium text-sm">Get in touch</span>
                 </div>
               </div>
-              {/* Animated cursor */}
               <motion.div 
                 className="absolute right-12 bottom-12 text-black z-10"
                 animate={{ x: [-30, 0, -30], y: [30, 0, 30] }}
@@ -795,7 +349,6 @@ const FeaturesBento = () => {
               <p className="text-zinc-700 font-medium text-base">Visualize your workflows and save hours.</p>
             </div>
             <div className="flex-1 flex gap-4 overflow-hidden">
-              {/* Kanban style columns */}
               {[
                 { title: 'New Lead', color: 'bg-accent-primary text-black' },
                 { title: 'Contacted', color: 'bg-white text-black' },
@@ -880,7 +433,7 @@ const FeaturesBento = () => {
             </div>
           </motion.div>
 
-          {/* Card 5: Dark Mode / Performance (Wide, bottom right) */}
+          {/* Card 5: Lightning Fast (Wide, bottom right) */}
           <motion.div 
             className="md:col-span-2 bg-black text-white border-4 border-black p-8 flex flex-col relative overflow-hidden group shadow-[8px_8px_0px_0px_rgba(255,201,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(255,201,0,1)] transition-all"
             initial={{ opacity: 0, y: 20 }}
@@ -1325,7 +878,128 @@ const Footer = () => {
   );
 };
 
-export default function App() {
+// ─── WORK PAGE (Our Work / Portfolio) ───────────────────────────────────────
+const dummy1 = `data:text/html;charset=utf-8,${encodeURIComponent(`<!DOCTYPE html><html><head><style>body{margin:0;font-family:sans-serif;background:#f3f4f6;padding:40px}.card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:24px;margin-bottom:16px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px}.metric{font-size:32px;font-weight:600}</style></head><body><div class="grid"><div class="card"><div class="metric">£12,450</div><div style="color:#10b981">↑ 14%</div></div><div class="card"><div class="metric">142</div><div style="color:#10b981">↑ 3 new</div></div><div class="card"><div class="metric">£3,200</div><div style="color:#ef4444">5 overdue</div></div></div></body></html>`)}`;
+const dummy2 = `data:text/html;charset=utf-8,${encodeURIComponent(`<!DOCTYPE html><html><head><style>body{margin:0;font-family:sans-serif;background:#fafafa;padding:40px}.job{background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:20px;margin-bottom:12px;display:flex;justify-content:space-between}</style></head><body><div class="job"><div><strong>09:00 AM</strong> HVAC Maintenance</div><span style="background:#ecfdf5;color:#059669;padding:4px 12px;border-radius:99px;font-size:13px">Completed</span></div><div class="job"><div><strong>11:30 AM</strong> Emergency Leak</div><span style="background:#eff6ff;color:#2563eb;padding:4px 12px;border-radius:99px;font-size:13px">In Progress</span></div></body></html>`)}`;
+
+const ProjectFrame = ({ project }: { project: any }) => {
+  const [interactive, setInteractive] = useState(false);
+  return (
+    <div className="flex flex-col gap-4 group" onMouseLeave={() => setInteractive(false)}>
+      <div className="flex justify-between items-end px-2">
+        <div>
+          <h3 className="text-2xl font-display font-bold text-black">{project.name}</h3>
+          <div className="font-mono text-xs text-black font-bold mt-1 uppercase tracking-wider">{project.type}</div>
+        </div>
+      </div>
+      <div className="border-4 border-black bg-white flex flex-col shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+        <div className="h-10 border-b-4 border-black flex items-center px-4 gap-4 bg-accent-primary">
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 bg-white border-2 border-black" />
+            <div className="w-3 h-3 bg-white border-2 border-black" />
+            <div className="w-3 h-3 bg-white border-2 border-black" />
+          </div>
+          <div className="flex-1 flex justify-center">
+            <div className="bg-white border-2 border-black px-4 py-1 text-[10px] font-bold text-black flex items-center gap-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+              <Globe className="w-3 h-3" />
+              {project.displayUrl}
+            </div>
+          </div>
+          <div className="w-10"></div>
+        </div>
+        <div className="relative w-full aspect-video bg-black overflow-hidden">
+          {project.screenshot ? (
+            <img 
+              src={project.screenshot} 
+              alt={`${project.name} screenshot`}
+              className="w-full h-full object-cover object-top transition-all duration-[8s] ease-in-out"
+              style={{ objectPosition: interactive ? 'bottom' : 'top' }}
+            />
+          ) : (
+            <iframe 
+              src={project.url} 
+              className="absolute top-0 left-0 w-[400%] h-[400%] md:w-[250%] md:h-[250%] origin-top-left scale-[0.25] md:scale-[0.4] border-none" 
+              loading="lazy" 
+              title={project.name}
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            />
+          )}
+          {!interactive && !project.screenshot && (
+            <div 
+              className="absolute inset-0 bg-white/10 z-10 cursor-pointer flex items-center justify-center backdrop-blur-[1px] transition-all duration-300"
+              onClick={() => setInteractive(true)}
+            >
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-accent-secondary text-black px-6 py-3 font-medium text-sm flex items-center gap-2 shadow-xl">
+                Click to interact <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
+          )}
+          {!interactive && project.screenshot && (
+            <div 
+              className="absolute inset-0 bg-white/10 z-10 cursor-pointer flex items-center justify-center backdrop-blur-[1px] transition-all duration-300"
+              onMouseEnter={() => setInteractive(true)}
+            >
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-accent-secondary text-black px-6 py-3 font-medium text-sm flex items-center gap-2 shadow-xl">
+                Hover to scroll <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const WorkPage = () => {
+  const projects = [
+    { name: "Barestack", url: "https://barestack.org", type: "Web App", displayUrl: "barestack.org", screenshot: "/barestack-ss.png" },
+    { name: "Pouchlab", url: "https://pouchlab.co.uk", type: "E-Commerce", displayUrl: "pouchlab.co.uk", screenshot: "/pouchlab-ss.png" },
+    { name: "AI Vaping", url: "https://aivaping.com", type: "Marketing Site", displayUrl: "aivaping.com", screenshot: "/aiv-ss.png" },
+    { name: "TradeFlow", url: dummy1, type: "B2B CRM Dashboard", displayUrl: "tradeflow-crm.com" },
+  ];
+
+  return (
+    <div className="min-h-screen bg-white text-black pt-24">
+      <Navbar />
+      <div className="pt-32 pb-32 px-6 md:px-12 border-t-4 border-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20">
+            <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-black bg-accent-primary mb-8 text-xs font-bold tracking-widest text-black uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-[1deg]">
+              <div className="w-2 h-2 bg-black"></div>
+              <span>Our Work</span>
+            </div>
+            <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight mb-6 font-bold">
+              Real results for <br/>
+              <span className="text-black/60">real businesses.</span>
+            </h2>
+            <p className="text-black text-lg font-medium max-w-xl">
+              Don't just take our word for it. Take a look at some of the websites and systems we've built for our clients.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {projects.map((project, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, ease: "easeOut", delay: (i % 2) * 0.1 }}
+                className={i % 2 !== 0 ? "lg:mt-24" : ""}
+              >
+                <ProjectFrame project={project} />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+// ─── HOMEPAGE ────────────────────────────────────────────────────────────────
+const HomePage = () => {
   return (
     <div className="min-h-screen selection:bg-accent-primary selection:text-bg font-sans">
       <Navbar />
@@ -1333,7 +1007,7 @@ export default function App() {
         <Hero />
         <Marquee />
         <Solutions />
-        <Portfolio />
+        {/* Portfolio removed from homepage - now on /work */}
         <Services />
         <FeaturesBento />
         <Process />
@@ -1345,5 +1019,15 @@ export default function App() {
       </main>
       <Footer />
     </div>
+  );
+};
+
+// ─── MAIN APP WITH ROUTING ───────────────────────────────────────────────────
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/work" element={<WorkPage />} />
+    </Routes>
   );
 }
