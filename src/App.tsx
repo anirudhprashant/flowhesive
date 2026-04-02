@@ -29,7 +29,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-white border-b-4 border-black">
       <RouterLink to="/" className="text-2xl font-display font-bold tracking-tight text-black flex items-center gap-3 no-underline">
         <div className="w-3 h-3 bg-accent-primary border-2 border-black"></div>
-        Flowhesive
+        flowhesive
       </RouterLink>
       <div className="hidden md:flex items-center gap-8 text-sm font-bold text-black uppercase tracking-wider">
         <a href="/#solutions" className="hover:text-accent-primary transition-colors no-underline">What we do</a>
@@ -245,7 +245,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-32 px-6 md:px-12 bg-accent-primary text-black border-t-4 border-black">
+    <section id="services" className="py-32 px-6 md:px-12 bg-white text-black border-t-4 border-black">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight font-bold">
@@ -260,7 +260,7 @@ const Services = () => {
           {services.map((service, index) => (
             <motion.div 
               key={service.id}
-              className={`group relative p-10 bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all`}
+              className={`group relative p-10 bg-accent-primary border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all`}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
