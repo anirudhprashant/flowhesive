@@ -9,6 +9,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Deploy to server via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -16,8 +19,14 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /tmp/flowhesive-src
-            git pull origin master
+            cd /tmp
+            # Clone fresh if needed, otherwise pull
+            if [ -d "flowhesive-src" ]; then
+              cd flowhesive-src && git pull origin master
+            else
+              git clone https://github.com/anirudhprashant/flowhesive.git flowhesive-src
+              cd flowhesive-src
+            fi
             npm install
             npm run build
             docker build -t flowhesive:latest . -f Dockerfile
