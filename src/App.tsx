@@ -38,7 +38,7 @@ const Navbar = () => {
         <a href="/#pricing" className="hover:text-accent-primary transition-colors no-underline">Pricing</a>
       </div>
       <div className="flex items-center gap-4">
-        <RouterLink to="/#contact" aria-label="Start a project with Flowhesive" className="hidden md:block px-6 py-2.5 text-sm font-bold text-black bg-accent-primary border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all uppercase tracking-wider no-underline">
+        <RouterLink to="/#contact" aria-label="Start a project with flowhesive" className="hidden md:block px-6 py-2.5 text-sm font-bold text-black bg-accent-primary border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all uppercase tracking-wider no-underline">
           Get in touch
         </RouterLink>
       </div>
@@ -546,7 +546,7 @@ const ExpertiseSection = () => {
   ];
 
   return (
-    <section className="py-32 px-6 md:px-12 bg-white text-black border-t border-black/5 overflow-hidden">
+    <section className="py-32 px-6 md:px-12 bg-zinc-100 text-black border-t-4 border-black overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
         
         {/* Left Content */}
@@ -676,7 +676,7 @@ const Testimonials = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-12 md:p-16 flex flex-col justify-between rotate-[-1deg] hover:rotate-0 transition-transform">
             <p className="text-xl md:text-2xl font-bold leading-relaxed text-black mb-12">
-              "Flowhesive completely transformed our operations. The custom CRM and automated workflows they built saved us over 20 hours a week in manual data entry. Worth every penny."
+              "flowhesive completely transformed our operations. The custom CRM and automated workflows they built saved us over 20 hours a week in manual data entry. Worth every penny."
             </p>
             <div>
               <div className="font-handwriting text-3xl font-bold text-black">Sarah Jenkins</div>
@@ -832,7 +832,7 @@ const Footer = () => {
             <p className="text-black text-lg max-w-md mb-12 font-medium leading-relaxed">
               Ready to get a website that actually works for your business? Send us a message and we'll get back to you today.
             </p>
-            <a href="mailto:hello@flowhesive.com" aria-label="Email Flowhesive" className="inline-flex items-center gap-4 text-xl font-bold hover:translate-x-2 transition-transform">
+            <a href="mailto:hello@flowhesive.com" aria-label="Email flowhesive" className="inline-flex items-center gap-4 text-xl font-bold hover:translate-x-2 transition-transform">
               <Mail className="w-6 h-6 text-black" aria-hidden="true" />
               hello@flowhesive.com
             </a>
@@ -856,7 +856,7 @@ const Footer = () => {
               rows={5}
               className="w-full bg-white border-4 border-black px-6 py-4 text-sm focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-black placeholder:text-zinc-500 resize-none font-bold"
             />
-            <button type="submit" aria-label="Send message to Flowhesive" className="w-full bg-black text-white font-display text-xl font-bold py-4 mt-2 border-4 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] transition-all uppercase tracking-wider">
+            <button type="submit" aria-label="Send message to flowhesive" className="w-full bg-black text-white font-display text-xl font-bold py-4 mt-2 border-4 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] transition-all uppercase tracking-wider">
               Send Message
             </button>
           </div>
@@ -865,7 +865,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t-4 border-black text-black text-sm font-bold">
           <div className="flex items-center gap-3">
             <div className="w-3 h-3 bg-black"></div>
-            &copy; {new Date().getFullYear()} Flowhesive. All rights reserved.
+            &copy; {new Date().getFullYear()} flowhesive. All rights reserved.
           </div>
           <div className="flex gap-8 mt-6 md:mt-0">
             <a href="#" aria-label="Follow us on Twitter" className="hover:underline decoration-2 underline-offset-4 transition-all">Twitter</a>
