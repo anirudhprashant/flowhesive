@@ -123,12 +123,12 @@ const MarqueeContent = () => (
   <div className="flex items-center">
     {[...Array(4)].map((_, i) => (
       <React.Fragment key={i}>
-        <span className="mx-8 font-display text-2xl md:text-3xl font-bold tracking-tight text-black hover:text-accent-primary transition-colors cursor-default uppercase">Websites</span>
-        <span className="text-black text-2xl">✦</span>
-        <span className="mx-8 font-display text-2xl md:text-3xl font-bold tracking-tight text-black hover:text-accent-primary transition-colors cursor-default uppercase">Automations</span>
-        <span className="text-black text-2xl">✦</span>
-        <span className="mx-8 font-display text-2xl md:text-3xl font-bold tracking-tight text-black hover:text-accent-primary transition-colors cursor-default uppercase">Support</span>
-        <span className="text-black text-2xl">✦</span>
+        <span className="mx-8 font-display text-2xl md:text-3xl font-bold tracking-tight text-accent-primary hover:text-white transition-colors cursor-default uppercase">Websites</span>
+        <span className="text-white/30 text-2xl">✦</span>
+        <span className="mx-8 font-display text-2xl md:text-3xl font-bold tracking-tight text-accent-primary hover:text-white transition-colors cursor-default uppercase">Automations</span>
+        <span className="text-white/30 text-2xl">✦</span>
+        <span className="mx-8 font-display text-2xl md:text-3xl font-bold tracking-tight text-accent-primary hover:text-white transition-colors cursor-default uppercase">Support</span>
+        <span className="text-white/30 text-2xl">✦</span>
       </React.Fragment>
     ))}
   </div>
@@ -136,7 +136,7 @@ const MarqueeContent = () => (
 
 const Marquee = () => {
   return (
-    <div className="py-6 border-y-4 border-black bg-accent-primary overflow-hidden flex whitespace-nowrap relative">
+    <div className="py-6 border-y-4 border-black bg-warm-surface overflow-hidden flex whitespace-nowrap relative">
       <div className="flex w-max animate-marquee hover:[animation-play-state:paused] transition-all">
         <MarqueeContent />
         <MarqueeContent />
@@ -171,7 +171,7 @@ const Solutions = () => {
   ];
 
   return (
-    <section id="solutions" className="py-32 px-6 md:px-12 bg-accent-primary text-black border-t-4 border-black relative">
+    <section id="solutions" className="py-32 px-6 md:px-12 bg-warm-cream text-black border-t-4 border-black relative">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
         
         {/* Sticky Header Side */}
@@ -260,22 +260,22 @@ const Services = () => {
           {services.map((service, index) => (
             <motion.div 
               key={service.id}
-              className={`group relative p-10 bg-accent-primary border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all`}
+              className={`group relative p-10 bg-warm-surface border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all`}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15, duration: 0.6 }}
             >
               <div className="flex justify-between items-start mb-12">
-                <div className="text-black">
+                <div className="text-accent-primary">
                   {service.icon}
                 </div>
-                <div className="font-handwriting text-2xl font-bold text-black">
+                <div className="font-handwriting text-2xl font-bold text-accent-primary">
                   {service.id}
                 </div>
               </div>
-              <h3 className="text-2xl font-display font-bold mb-4 tracking-tight">{service.title}</h3>
-              <p className="text-zinc-700 leading-relaxed font-medium text-sm">
+              <h3 className="text-2xl font-display font-bold mb-4 tracking-tight text-white">{service.title}</h3>
+              <p className="text-white/70 leading-relaxed font-medium text-sm">
                 {service.description}
               </p>
             </motion.div>
@@ -435,7 +435,7 @@ const FeaturesBento = () => {
 
           {/* Card 5: Lightning Fast (Wide, bottom right) */}
           <motion.div 
-            className="md:col-span-2 bg-black text-white border-4 border-black p-8 flex flex-col relative overflow-hidden group shadow-[8px_8px_0px_0px_rgba(255,201,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(255,201,0,1)] transition-all"
+            className="md:col-span-2 bg-black text-white border-4 border-black p-8 flex flex-col relative overflow-hidden group shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -546,7 +546,7 @@ const ExpertiseSection = () => {
   ];
 
   return (
-    <section className="py-32 px-6 md:px-12 bg-zinc-100 text-black border-t-4 border-black overflow-hidden">
+    <section className="py-32 px-6 md:px-12 bg-warm-surface text-white border-t-4 border-white overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
         
         {/* Left Content */}
@@ -557,14 +557,14 @@ const ExpertiseSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h4 className="font-handwriting text-3xl md:text-4xl text-black mb-6 rotate-[-2deg]">
+            <h4 className="font-handwriting text-3xl md:text-4xl text-accent-primary mb-6 rotate-[-2deg]">
               Meet your new digital team
             </h4>
-            <div className="w-px h-16 bg-black/20 mb-8 ml-4 hidden md:block"></div>
+            <div className="w-px h-16 bg-white/20 mb-8 ml-4 hidden md:block"></div>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] font-bold mb-8">
               A dedicated team, building websites that actually work for you.
             </h2>
-            <p className="text-zinc-600 text-lg font-light leading-relaxed max-w-lg">
+            <p className="text-white/60 text-lg font-light leading-relaxed max-w-lg">
               We don't just hand over a website and disappear. We stick around to ensure your digital presence is always performing at its best, bringing in leads, and saving you time. Our proven process provides you with a safe pair of hands to deal with your business's technical challenges.
             </p>
           </motion.div>
@@ -579,11 +579,11 @@ const ExpertiseSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {/* Yellow Background Block */}
+            {/* Warm Amber Background Block */}
             <div className="absolute inset-0 bg-accent-primary translate-x-4 translate-y-4 md:translate-x-8 md:translate-y-8" />
             
             {/* Image Container */}
-            <div className="absolute inset-0 bg-zinc-200 overflow-hidden border-4 border-white">
+            <div className="absolute inset-0 bg-zinc-700 overflow-hidden border-4 border-warm-surface">
               <img 
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" 
                 alt="Team working together" 
@@ -596,7 +596,7 @@ const ExpertiseSection = () => {
             {stickers.map((sticker, i) => (
               <motion.div
                 key={i}
-                className="absolute bg-white border-[3px] border-black px-4 py-2 font-handwriting text-xl md:text-2xl font-bold text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-20 whitespace-nowrap cursor-default"
+                className="absolute bg-accent-primary border-[3px] border-black px-4 py-2 font-handwriting text-xl md:text-2xl font-bold text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-20 whitespace-nowrap cursor-default"
                 style={{ 
                   top: sticker.top, 
                   bottom: sticker.bottom, 
@@ -666,15 +666,15 @@ const Industries = () => {
 
 const Testimonials = () => {
   return (
-    <section className="py-32 px-6 md:px-12 bg-accent-primary text-black border-t-4 border-black">
+    <section className="py-32 px-6 md:px-12 bg-warm-surface text-white border-t-4 border-white">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20 text-center">
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight mb-6 font-bold">
-            Client <span className="text-white bg-black px-4 py-1 border-4 border-black shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] rotate-[2deg] inline-block">success.</span>
+            Client <span className="text-black bg-accent-primary px-4 py-1 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-[2deg] inline-block">success.</span>
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-12 md:p-16 flex flex-col justify-between rotate-[-1deg] hover:rotate-0 transition-transform">
+          <div className="bg-warm-cream border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-12 md:p-16 flex flex-col justify-between rotate-[-1deg] hover:rotate-0 transition-transform">
             <p className="text-xl md:text-2xl font-bold leading-relaxed text-black mb-12">
               "flowhesive completely transformed our operations. The custom CRM and automated workflows they built saved us over 20 hours a week in manual data entry. Worth every penny."
             </p>
@@ -683,7 +683,7 @@ const Testimonials = () => {
               <div className="font-mono text-xs text-zinc-600 font-bold mt-1 uppercase">Operations Director, TechFlow</div>
             </div>
           </div>
-          <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-12 md:p-16 flex flex-col justify-between rotate-[1deg] hover:rotate-0 transition-transform">
+          <div className="bg-warm-cream border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-12 md:p-16 flex flex-col justify-between rotate-[1deg] hover:rotate-0 transition-transform">
             <p className="text-xl md:text-2xl font-bold leading-relaxed text-black mb-12">
               "Our new website isn't just beautiful—it actually converts. We've seen a 40% increase in inbound leads since launching. The team's attention to detail is unmatched."
             </p>
@@ -702,16 +702,16 @@ const FAQItem: React.FC<{ question: string, answer: string }> = ({ question, ans
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-4 border-black mb-4 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
+    <div className="border-4 border-white mb-4 bg-warm-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
       <button 
         className="w-full flex justify-between items-center text-left focus:outline-none group p-6"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        <h4 className="text-xl md:text-2xl font-display font-bold text-black pr-8">
+        <h4 className="text-xl md:text-2xl font-display font-bold text-white pr-8">
           {question}
         </h4>
-        <div className={`p-2 border-4 border-black transition-colors ${isOpen ? 'bg-accent-primary text-black' : 'bg-white text-black group-hover:bg-accent-primary'}`}>
+        <div className={`p-2 border-4 border-white transition-colors ${isOpen ? 'bg-accent-primary text-black' : 'bg-transparent text-white group-hover:bg-accent-primary group-hover:text-black'}`}>
           {isOpen ? <Minus className="w-6 h-6 font-bold" /> : <Plus className="w-6 h-6 font-bold" />}
         </div>
       </button>
@@ -721,9 +721,9 @@ const FAQItem: React.FC<{ question: string, answer: string }> = ({ question, ans
             initial={{ height: 0, opacity: 0 }} 
             animate={{ height: 'auto', opacity: 1 }} 
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden bg-zinc-50 border-t-4 border-black"
+            className="overflow-hidden bg-warm-cream border-t-4 border-white"
           >
-            <p className="p-6 text-zinc-800 font-medium leading-relaxed text-lg">
+            <p className="p-6 text-black font-medium leading-relaxed text-lg">
               {answer}
             </p>
           </motion.div>
@@ -754,13 +754,13 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="py-32 px-6 md:px-12 bg-accent-secondary text-black border-t-4 border-black">
+    <section className="py-32 px-6 md:px-12 bg-warm-surface text-white border-t-4 border-white">
       <div className="max-w-4xl mx-auto">
         <div className="mb-16">
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight mb-6 font-bold">
-            Common <span className="text-white bg-black px-4 py-1 border-4 border-black shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] rotate-[-1deg] inline-block">questions.</span>
+            Common <span className="text-black bg-accent-primary px-4 py-1 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-[-1deg] inline-block">questions.</span>
           </h2>
-          <p className="text-black text-lg font-medium mt-8">
+          <p className="text-white/70 text-lg font-medium mt-8">
             Everything you need to know about working with us.
           </p>
         </div>
@@ -787,7 +787,7 @@ const Pricing = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="flex-1">
-            <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-black bg-accent-primary text-black font-bold text-xs tracking-widest uppercase mb-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-[-2deg]">
+            <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-black bg-white text-black font-bold text-xs tracking-widest uppercase mb-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-[-2deg]">
               Transparent Pricing
             </div>
             <h2 className="font-display text-4xl md:text-5xl tracking-tight mb-6 leading-tight font-bold">
@@ -821,19 +821,19 @@ const Pricing = () => {
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-accent-primary text-black pt-32 pb-12 px-6 md:px-12 border-t-4 border-black">
+    <footer id="contact" className="bg-warm-surface text-white pt-32 pb-12 px-6 md:px-12 border-t-4 border-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
           <div>
             <h2 className="font-display text-5xl md:text-7xl tracking-tight mb-8 leading-tight font-bold">
               Let's <br/>
-              <span className="text-white bg-black px-4 py-1 border-4 border-black shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] rotate-[-2deg] inline-block">talk.</span>
+              <span className="text-black bg-accent-primary px-4 py-1 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-[-2deg] inline-block">talk.</span>
             </h2>
-            <p className="text-black text-lg max-w-md mb-12 font-medium leading-relaxed">
+            <p className="text-white/70 text-lg max-w-md mb-12 font-medium leading-relaxed">
               Ready to get a website that actually works for your business? Send us a message and we'll get back to you today.
             </p>
             <a href="mailto:hello@flowhesive.com" aria-label="Email flowhesive" className="inline-flex items-center gap-4 text-xl font-bold hover:translate-x-2 transition-transform">
-              <Mail className="w-6 h-6 text-black" aria-hidden="true" />
+              <Mail className="w-6 h-6 text-accent-primary" aria-hidden="true" />
               hello@flowhesive.com
             </a>
           </div>
@@ -843,34 +843,34 @@ const Footer = () => {
               <input 
                 type="text" 
                 placeholder="Your Name" 
-                className="w-full bg-white border-4 border-black px-6 py-4 text-sm focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-black placeholder:text-zinc-500 font-bold"
+                className="w-full bg-warm-cream border-4 border-white px-6 py-4 text-sm focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-black placeholder:text-zinc-500 font-bold"
               />
               <input 
                 type="email" 
                 placeholder="Your Email" 
-                className="w-full bg-white border-4 border-black px-6 py-4 text-sm focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-black placeholder:text-zinc-500 font-bold"
+                className="w-full bg-warm-cream border-4 border-white px-6 py-4 text-sm focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-black placeholder:text-zinc-500 font-bold"
               />
             </div>
             <textarea 
               placeholder="How can we help you?" 
               rows={5}
-              className="w-full bg-white border-4 border-black px-6 py-4 text-sm focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-black placeholder:text-zinc-500 resize-none font-bold"
+              className="w-full bg-warm-cream border-4 border-white px-6 py-4 text-sm focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-black placeholder:text-zinc-500 resize-none font-bold"
             />
-            <button type="submit" aria-label="Send message to flowhesive" className="w-full bg-black text-white font-display text-xl font-bold py-4 mt-2 border-4 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] transition-all uppercase tracking-wider">
+            <button type="submit" aria-label="Send message to flowhesive" className="w-full bg-accent-primary text-black font-display text-xl font-bold py-4 mt-2 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all uppercase tracking-wider">
               Send Message
             </button>
           </div>
         </div>
         
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t-4 border-black text-black text-sm font-bold">
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t-4 border-white/30 text-white/60 text-sm font-bold">
           <div className="flex items-center gap-3">
-            <div className="w-3 h-3 bg-black"></div>
+            <div className="w-3 h-3 bg-accent-primary"></div>
             &copy; {new Date().getFullYear()} flowhesive. All rights reserved.
           </div>
           <div className="flex gap-8 mt-6 md:mt-0">
-            <a href="#" aria-label="Follow us on Twitter" className="hover:underline decoration-2 underline-offset-4 transition-all">Twitter</a>
-            <a href="#" aria-label="Follow us on LinkedIn" className="hover:underline decoration-2 underline-offset-4 transition-all">LinkedIn</a>
-            <a href="#" aria-label="Follow us on Instagram" className="hover:underline decoration-2 underline-offset-4 transition-all">Instagram</a>
+            <a href="#" aria-label="Follow us on Twitter" className="hover:text-accent-primary transition-colors">Twitter</a>
+            <a href="#" aria-label="Follow us on LinkedIn" className="hover:text-accent-primary transition-colors">LinkedIn</a>
+            <a href="#" aria-label="Follow us on Instagram" className="hover:text-accent-primary transition-colors">Instagram</a>
           </div>
         </div>
       </div>

@@ -8,6 +8,9 @@
   --color-accent-secondary: var(--accent-secondary);
   --color-text-main: var(--text-main);
   --color-text-muted: var(--text-muted);
+  --color-warm-cream: var(--warm-cream);
+  --color-warm-surface: var(--warm-surface);
+  --color-warm-amber: var(--warm-amber);
   
   --font-display: 'Space Grotesk', sans-serif;
   --font-sans: 'Inter', sans-serif;
@@ -16,16 +19,19 @@
 }
 
 :root {
-  --bg: #0a0a0a;
-  --surface: #141414;
+  --bg: #0c0c0b;
+  --surface: #1c1b18;
   --accent-primary: #ccff00;
   --accent-secondary: #00FF87;
   --text-main: #f5f5f5;
   --text-muted: #a3a3a3;
+  --warm-cream: #f0e8d8;
+  --warm-surface: #1c1b18;
+  --warm-amber: #d4820a;
 }
 
 body {
-  background-color: #ffffff;
+  background-color: #faf8f4;
   color: #000000;
   font-family: var(--font-sans);
   overflow-x: hidden;
